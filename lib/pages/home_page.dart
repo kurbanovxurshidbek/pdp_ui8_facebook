@@ -9,140 +9,174 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text("facebook",style: TextStyle(color: Colors.blueAccent,fontSize: 30,fontWeight: FontWeight.bold),),
+        actions: [
+          Icon(Icons.search_rounded, color: Colors.grey[800], size: 30,),
+          SizedBox(width: 15,),
+          Icon(Icons.camera_alt, color: Colors.grey[800], size: 30,),
+          SizedBox(width: 15,),
+        ],
+        elevation: 0,
+      ),
+      backgroundColor: Colors.grey[400],
+      body: ListView(
         children: <Widget>[
+          // #stories #seearchive
           Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(top: 0),
+            padding: EdgeInsets.only(top: 10,left: 10,right: 10),
             height: 120,
-            padding: EdgeInsets.only(top: 50, right: 15, left: 15, bottom: 10),
-            child: Row(
-              children: <Widget>[
+            child: Column(
+              children: [
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.grey[200]
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search, color: Colors.grey,),
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(color: Colors.grey),
-                        hintText: "Search",
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 45,
+                        height: 45,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/user_5.jpeg"),
+                                fit: BoxFit.cover
+                            )
+                        ),
                       ),
-                    ),
+                      SizedBox(width: 10,),
+                      Expanded(
+                        child: Container(
+                          height: 46,
+                          padding: EdgeInsets.only(left: 10,right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(23),
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey[400],
+                            ),
+                          ),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "What`s on your mind?",
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(width: 20,),
-                Icon(Icons.camera_alt, color: Colors.grey[800], size: 30,)
+                Expanded(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.video_call,color: Colors.red,),
+                            SizedBox(width: 5,),
+                            Text("Live"),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 1,
+                        margin: EdgeInsets.only(top: 14,bottom: 14),
+                        color: Colors.grey[300],
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.photo,color: Colors.green,),
+                            SizedBox(width: 5,),
+                            Text("Photo"),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 1,
+                        margin: EdgeInsets.only(top: 14,bottom: 14),
+                        color: Colors.grey[300],
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.location_on,color: Colors.red,),
+                            SizedBox(width: 5,),
+                            Text("Check in"),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  // #stories #seearchive
-                  Container(
-                    padding: EdgeInsets.only(left: 10,right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: <Widget>[
-                        Text("Stories", style: TextStyle(color: Colors.grey[900], fontWeight: FontWeight.bold, fontSize: 22, letterSpacing: 1.2),),
-                        Text("See Archive"),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    height: 180,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        SizedBox(width: 10,),
-                        makeStory(
-                            storyImage: 'assets/images/story_5.jpeg',
-                            userImage: 'assets/images/user_5.jpeg',
-                            userName: 'User Five'
-                        ),
-                        makeStory(
-                            storyImage: 'assets/images/story_4.jpeg',
-                            userImage: 'assets/images/user_4.jpeg',
-                            userName: 'User Four'
-                        ),
-                        makeStory(
-                            storyImage: 'assets/images/story_3.jpeg',
-                            userImage: 'assets/images/user_3.jpeg',
-                            userName: 'User Three'
-                        ),
-                        makeStory(
-                            storyImage: 'assets/images/story_2.jpeg',
-                            userImage: 'assets/images/user_2.jpeg',
-                            userName: 'User Two'
-                        ),
-                        makeStory(
-                            storyImage: 'assets/images/story_1.jpeg',
-                            userImage: 'assets/images/user_1.jpeg',
-                            userName: 'User One'
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 10,),
-                  // #feeds
-                  makeFeed(
-                      userName: 'User One',
-                      userImage: 'assets/images/user_1.jpeg',
-                      feedTime: '1 hr ago',
-                      feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-                      feedImage: 'assets/images/story_1.jpeg'
-                  ),
-                  makeFeed(
-                      userName: 'User Two',
-                      userImage: 'assets/images/user_2.jpeg',
-                      feedTime: '1 hr ago',
-                      feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-                      feedImage: 'assets/images/story_2.jpeg'
-                  ),
-                  makeFeed(
-                      userName: 'User Three',
-                      userImage: 'assets/images/user_3.jpeg',
-                      feedTime: '1 hr ago',
-                      feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-                      feedImage: 'assets/images/story_3.jpeg'
-                  ),
-                  makeFeed(
-                      userName: 'User Four',
-                      userImage: 'assets/images/user_4.jpeg',
-                      feedTime: '1 hr ago',
-                      feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-                      feedImage: 'assets/images/story_4.jpeg'
-                  ),
-                  makeFeed(
-                      userName: 'User Five',
-                      userImage: 'assets/images/user_5.jpeg',
-                      feedTime: '1 hr ago',
-                      feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-                      feedImage: 'assets/images/story_5.jpeg'
-                  ),
-                ],
-              ),
+          Container(
+            margin: EdgeInsets.only(top: 10),
+            height: 200,
+            padding: EdgeInsets.only(top: 10,bottom: 10),
+            color: Colors.white,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                SizedBox(width: 10,),
+                makeStory(
+                    storyImage: 'assets/images/story_5.jpeg',
+                    userImage: 'assets/images/user_5.jpeg',
+                    userName: 'User Five'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/story_4.jpeg',
+                    userImage: 'assets/images/user_4.jpeg',
+                    userName: 'User Four'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/story_3.jpeg',
+                    userImage: 'assets/images/user_3.jpeg',
+                    userName: 'User Three'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/story_2.jpeg',
+                    userImage: 'assets/images/user_2.jpeg',
+                    userName: 'User Two'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/story_1.jpeg',
+                    userImage: 'assets/images/user_1.jpeg',
+                    userName: 'User One'
+                ),
+              ],
             ),
-          )
+          ),
+          // #feeds
+          makeFeed(
+              userName: 'User Two',
+              userImage: 'assets/images/user_2.jpeg',
+              feedTime: '1 hr ago',
+              feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
+              feedImage: 'assets/images/story_2.jpeg'
+          ),
+          makeFeed(
+              userName: 'User Three',
+              userImage: 'assets/images/user_3.jpeg',
+              feedTime: '1 hr ago',
+              feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
+              feedImage: 'assets/images/story_3.jpeg'
+          ),
         ],
       ),
     );
   }
 
-
   Widget makeStory({storyImage, userImage, userName}) {
     return AspectRatio(
-      aspectRatio: 1.6 / 2,
+      aspectRatio: 1.3 / 2,
       child: Container(
         margin: EdgeInsets.only(right: 10),
         decoration: BoxDecoration(
@@ -173,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                 height: 40,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2),
+                    border: Border.all(color: Colors.blue, width: 2),
                     image: DecorationImage(
                         image: AssetImage(userImage),
                         fit: BoxFit.cover
@@ -190,13 +224,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget makeFeed({userName, userImage, feedTime, feedText, feedImage}) {
     return Container(
+      margin: EdgeInsets.only(top: 10),
+      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            height: 10,
-            color: Colors.grey[200],
-          ),
 
           Container(
             padding: EdgeInsets.only(left: 10,right: 10),
@@ -302,7 +334,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
   Widget makeLove() {
     return Container(
       width: 25,
