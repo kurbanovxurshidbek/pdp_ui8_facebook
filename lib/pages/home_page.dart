@@ -13,10 +13,20 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         title: Text("facebook",style: TextStyle(color: Colors.blueAccent,fontSize: 30,fontWeight: FontWeight.bold),),
         actions: [
-          Icon(Icons.search_rounded, color: Colors.grey[700], size: 30,),
-          SizedBox(width: 15,),
-          Icon(Icons.camera_alt, color: Colors.grey[700], size: 30,),
-          SizedBox(width: 15,),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.search,
+              color: Colors.grey[800],
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.camera_alt,
+              color: Colors.grey[800],
+            ),
+          ),
         ],
         elevation: 0,
       ),
