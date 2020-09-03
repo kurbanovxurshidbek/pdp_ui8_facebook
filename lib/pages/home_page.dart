@@ -13,14 +13,14 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         title: Text("facebook",style: TextStyle(color: Colors.blueAccent,fontSize: 30,fontWeight: FontWeight.bold),),
         actions: [
-          Icon(Icons.search_rounded, color: Colors.grey[800], size: 30,),
+          Icon(Icons.search_rounded, color: Colors.grey[700], size: 30,),
           SizedBox(width: 15,),
-          Icon(Icons.camera_alt, color: Colors.grey[800], size: 30,),
+          Icon(Icons.camera_alt, color: Colors.grey[700], size: 30,),
           SizedBox(width: 15,),
         ],
         elevation: 0,
       ),
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[300],
       body: ListView(
         children: <Widget>[
           // #stories #seearchive
@@ -49,18 +49,19 @@ class _HomePageState extends State<HomePage> {
                       Expanded(
                         child: Container(
                           height: 46,
-                          padding: EdgeInsets.only(left: 10,right: 10),
+                          padding: EdgeInsets.only(left: 15,right: 15),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(23),
                             border: Border.all(
                               width: 1,
-                              color: Colors.grey[400],
+                              color: Colors.grey[500],
                             ),
                           ),
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: "What`s on your mind?",
                               border: InputBorder.none,
+                              hintStyle: TextStyle(color: Colors.grey[700]),
                             ),
                           ),
                         ),
@@ -221,7 +222,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
   Widget makeFeed({userName, userImage, feedTime, feedText, feedImage}) {
     return Container(
       margin: EdgeInsets.only(top: 10),
